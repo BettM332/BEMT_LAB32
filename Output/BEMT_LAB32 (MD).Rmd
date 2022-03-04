@@ -1,0 +1,55 @@
+---
+title: "LAB32 (MD)"
+author: "Bettsy E. Mujica"
+date: "3/3/2022"
+output: html_document
+---
+
+LAB API DATAMEx
+
+Instalar paquetería
+```{r}
+install.packages("jsonlite")
+
+```
+
+Llamar a la librería
+```{r}
+library(jsonlite)
+
+```
+
+Buscar archivo 
+
+Seleccionar el nombre dal archivo
+```{r}
+datos_api2 <- fromJSON("/cloud/project/Municipality-Year-records.json")
+
+```
+
+Saber la clase de datos
+```{r}
+class(datos_api2)
+
+```
+
+Saber los nombres de los datos
+```{r}
+names(datos_api2)
+
+```
+
+Ver los datos
+```{r}
+head(datos_api2[["data"]])
+
+```
+
+Crear un data frame
+```{r}
+final_API <- as.data.frame((datos_api2[["data"]]))
+class(final_API)
+write.csv(final_API, file = "final_API.CSV")
+
+```
+
